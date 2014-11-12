@@ -51,7 +51,7 @@ var ssml = require('ssml');
 var ssmlDoc = new ssml()
 ```
 
-The document is initialized with language set to `en-US` by default. To use a different language, specify it in the `lang` parameter:
+The document is initialized with the language set to `en-US` by default. To use a different language, specify it in the `language` parameter:
 
 ```javascript
 var ssmlDoc = new ssml({ language: 'fr-FR' });
@@ -104,7 +104,7 @@ Output:
 ```xml
 <?xml version="1.0">
 <speak xmlns="http://www.w3.org/2001/10/synthesis" version="1.0" xml:lang="en-US">
-	The time now is 
+	The time now is
 	<say-as interpret-as="time" format="hms24">01:59:59</say-as>
 </speak>
 ```
@@ -179,7 +179,7 @@ Output:
 ```xml
 <?xml version="1.0">
 <speak xmlns="http://www.w3.org/2001/10/synthesis" version="1.0" xml:lang="en-US">
-	I'm 
+	I'm
 	<prosody pitch="-50% rate="0.6">sorry</prosody>
 </speak>
 ```
