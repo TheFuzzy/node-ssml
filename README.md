@@ -54,7 +54,7 @@ var ssmlDoc = new ssml()
 The document is initialized with language set to `en-US` by default. To use a different language, specify it in the `lang` parameter:
 
 ```javascript
-var ssmlDoc = new ssml({ lang: 'fr-FR' });
+var ssmlDoc = new ssml({ language: 'fr-FR' });
 ...
 ssmlDoc.toString()
 ```

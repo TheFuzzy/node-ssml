@@ -349,7 +349,7 @@ SSML.prototype.toString = function toString(options) {
         element = xmlBuilder.create('speak');
         element.att('xmlns', 'http://www.w3.org/2001/10/synthesis');
         element.att('version', '1.0');
-        element.att('xml:lang','en-US');
+        element.att('xml:lang', this._options.language);
         if (options && options.full) {
             element.att('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance');
             element.att('xsi:schemaLocation', 'http://www.w3.org/TR/speech-synthesis/synthesis.xsd');
