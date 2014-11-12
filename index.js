@@ -1,6 +1,6 @@
 /********************************************************************
  * @module node-ssml
- * @version 0.0.2
+ * @version 0.0.3
  * This is a rudimentary implementation of an SSML library.
  * 
  * This library is able to produce an SSML document readable by a

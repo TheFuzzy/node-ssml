@@ -1,6 +1,6 @@
 {
   "name": "ssml",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "a SSML document builder for node.js",
   "main": "index.js",
   "scripts": {
@@ -18,8 +18,8 @@
     "xmlbuilder": "~2.1.0",
     "underscore": "~1.5.2"
   },
-  "repository" : {
-    "type" : "git",
-    "url" : "git://github.com/TheFuzzy/node-ssml.git"
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/TheFuzzy/node-ssml.git"
   }
 }
