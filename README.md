@@ -9,7 +9,7 @@ The documentation also assumes that the reader has at least *skimmed* through th
 As of v0.0.2, only the following elements of SSML are supported:
 
 * say-as
-* prosodyla
+* prosody
 * audio
 * break
 * sub
