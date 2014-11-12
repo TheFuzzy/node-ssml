@@ -9,7 +9,7 @@ The documentation also assumes that the reader has at least *skimmed* through th
 As of v0.0.2, only the following elements of SSML are supported:
 
 * say-as
-* prosody
+* prosodyla
 * audio
 * break
 * sub
@@ -54,7 +54,7 @@ var ssmlDoc = new ssml()
 The document is initialized with language set to `en-US` by default. To use a different language, specify it in the `lang` parameter:
 
 ```javascript
-var ssmlDoc = new ssml({ lang: 'fr-FR' });
+var ssmlDoc = new ssml({ language: 'fr-FR' });
 ...
 ssmlDoc.toString()
 ```
