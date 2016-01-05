@@ -80,7 +80,7 @@ ssmlDoc.say('I am talking to you.');
 
 The text string can also be described by the `text` parameter.
 
-`intepretAs` can also be specified as an additional parameter, but will encapsulate the text-output into a `say-as` element. More parameters can be specified for the `say-as` element, only *if* `intepretAs` is used:
+`interpretAs` can also be specified as an additional parameter, but will encapsulate the text-output into a `say-as` element. More parameters can be specified for the `say-as` element, only *if* `interpretAs` is used:
 
 * `format`
 * `detail`
@@ -93,7 +93,7 @@ Example:
 ssmlDoc.say('The time now is ')
     .say({
         text: '01:59:59',
-        intepretAs: 'telephone',
+        interpretAs: 'telephone',
         format: 'hms24'
     })
     .toString();
