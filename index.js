@@ -201,10 +201,12 @@ SSML.prototype.say = function say(text, options) {
     } else if (!options) {
         options = {};
     }
-    if (_.isString(text)) {
-        options.text = text;
-    } else if (_.isFunction(text.toString)) {
-        options.text = text.toString();
+    if (!_.isString(options.text)) {
+        if (_.isString(text)) {
+            options.text = text;
+        } else if (_.isFunction(text.toString)) {
+            options.text = text.toString();
+        }
     }
     var newSay = new Say(options);
     if (!newSay.isValid) throw new Error("Say has invalid options!");
