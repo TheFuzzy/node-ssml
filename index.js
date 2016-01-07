@@ -47,13 +47,13 @@ function Say(options) {
     if (!(this instanceof Say))
         return new Say(options);
     if (options) {
-        _.extend(this, _.pick(options, 'text', 'intepretAs', 'format', 'detail'));
+        _.extend(this, _.pick(options, 'text', 'interpretAs', 'format', 'detail'));
     }
 }
 
 Say.prototype.isValid = function isSayValid() {
     if (!_.isString(this.text)) return false;
-    if (isInvalid(this.intepretAs)) return false;
+    if (isInvalid(this.interpretAs)) return false;
     return true;
 }
 
@@ -66,10 +66,10 @@ Say.prototype.renderInto = function renderSayInto(xml, replacer) {
         subElement.att('alias', replacer[replacedText]).txt(replacedText);
         outputText = outputText.replace(new RegExp(replacedText, 'g'), subElement.end());
     }
-    if (this.intepretAs) {
+    if (this.interpretAs) {
         var sayAsElement = xml.ele('say-as');
         sayAsElement.raw(outputText);
-        sayAsElement.att('intepret-as', this.intepretAs);
+        sayAsElement.att('interpret-as', this.interpretAs);
         if (_.isString(this.format))
             sayAsElement.att('format', this.format);
         if (_.isString(this.detail))
