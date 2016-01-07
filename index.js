@@ -205,7 +205,7 @@ SSML.prototype.say = function say(text, options) {
         options.text = text;
     }
     var newSay = new Say(options);
-    if (!newSay.isValid) throw new Error("Say has invalid options!");
+    if (!newSay.isValid()) throw new Error("Say has invalid options!");
     this._elements.push(newSay);
 
     return this;
@@ -227,7 +227,7 @@ SSML.prototype.break = function ssmlBreak(time, options) {
         options.time = time;
     }
     var newBreak = new Break(options);
-    if (!newBreak.isValid) throw new Error("Break has invalid options!");
+    if (!newBreak.isValid()) throw new Error("Break has invalid options!");
     this._elements.push(newBreak);
     return this;
 }
@@ -239,7 +239,7 @@ SSML.prototype.break = function ssmlBreak(time, options) {
  */
 SSML.prototype.prosody = function prosody(options) {
     var newProsody = new Prosody(options);
-    if (!newProsody.isValid) throw new Error("Prosody has invalid options!");
+    if (!newProsody.isValid()) throw new Error("Prosody has invalid options!");
     this._elements.push(newProsody);
     return this;
 }
@@ -260,7 +260,7 @@ SSML.prototype.audio = function audio(source, options) {
         options.src = source;
     }
     var newAudio = new Audio(options);
-    if (!newAudio.isValid) throw new Error("Audio has invalid options!");
+    if (!newAudio.isValid()) throw new Error("Audio has invalid options!");
     this._elements.push(newAudio);
     return this;
 }
