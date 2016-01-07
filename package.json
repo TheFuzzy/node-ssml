@@ -1,6 +1,6 @@
 {
   "name": "ssml",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "a SSML document builder for node.js",
   "main": "index.js",
   "scripts": {
