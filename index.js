@@ -2,7 +2,7 @@
  * @module node-ssml
  * @version 0.0.3
  * This is a rudimentary implementation of an SSML library.
- * 
+ *
  * This library is able to produce an SSML document readable by a
  * SSML-compliant processor.
  * This version only implements a very small subset of the SSML 1.0
@@ -191,7 +191,7 @@ EndElement.prototype.renderInto = function renderEndElementInto(xml) {
 
 /**
  * @method say
- * @param {String} The text (or object with toString()) to be output. Optional.
+ * @param {String} The text to be output. Optional.
  * @param {Object} An object containing options.
  * @throws {Error} The options provided are invalid.
  */
@@ -203,13 +203,11 @@ SSML.prototype.say = function say(text, options) {
     }
     if (_.isString(text)) {
         options.text = text;
-    } else if (_.isFunction(text.toString)) {
-        options.text = text.toString();
     }
     var newSay = new Say(options);
     if (!newSay.isValid) throw new Error("Say has invalid options!");
     this._elements.push(newSay);
-    
+
     return this;
 }
 
