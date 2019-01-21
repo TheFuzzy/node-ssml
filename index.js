@@ -179,7 +179,7 @@ EndElement.prototype.isValid = function isEndElementValid() {
 }
 
 EndElement.prototype.renderInto = function renderEndElementInto(xml) {
-    if (xml.isRoot) return xml.up();
+    if (!xml.isRoot) return xml.up();
     return xml;
 }
 
