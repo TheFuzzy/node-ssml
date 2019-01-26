@@ -46,6 +46,15 @@ declare module 'ssml' {
     language?: string;
   }
 
+  interface PronounceOptions {
+    alphabet?: string;
+    text?: string;
+  }
+
+  interface PronounceOptionsPhoneme {
+    phoneme: string;
+  }
+
   interface ToStringOptions {
     minimal?: boolean;
     full?: boolean;
@@ -78,6 +87,10 @@ declare module 'ssml' {
 
     /** Represents a change in speaking voice */
     voice(options: VoiceOptions): this;
+
+    /** Provide a phonemic/phonetic pronunciation for the contained text */
+    pronounce(phoneme: string, options?: PronounceOptions): this;
+    pronounce(options: PronounceOptionsPhoneme): this;
 
     /**
      * Sets the internal context to the previous level in XML.
