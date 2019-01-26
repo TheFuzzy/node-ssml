@@ -109,6 +109,57 @@ Output:
 </speak>
 ```
 
+### voice(options)
+
+Change the speaking voice
+
+```javascript
+ssmlDoc.voice({ gender: 'female' });
+```
+
+At least one voice parameter should be added:
+
+* `gender`
+* `age`
+* `name`
+* `variant`
+* `language`
+
+See details in the [SSML specification](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/#S3.2.1).
+
+### pronounce(phoneme[, options]) / pronounce(options)
+
+Provide a phonemic/phonetic pronunciation for the contained text
+
+Example:
+
+```javascript
+ssmlDoc.pronounce('t&#x259;mei&#x325;&#x27E;ou&#x325;');
+
+// or
+
+ssmlDoc.pronounce('t&#x259;mei&#x325;&#x27E;ou&#x325;', { text: 'tomato' });
+```
+
+Output:
+
+```xml
+<?xml version="1.0">
+<speak xmlns="http://www.w3.org/2001/10/synthesis" version="1.0" xml:lang="en-US">
+	<phoneme alphabet="ipa" ph="t&amp;#x259;mei&amp;#x325;&amp;#x27E;ou&amp;#x325;">tomato</phoneme>
+</speak>
+```
+
+The phoneme element will be automatically closed.
+
+Options:
+
+* `phoneme`: the `ph` pronunciation (should be entity-encoded)
+* `alphabet`: defaults to `ipa`
+* `text`: optional human-readable text
+
+See details in the [SSML specification](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/#S3.1.9).
+
 ### break(time[, options]) / break(options)
 
 Represents a pause in the speech. Accepts one of the following parameters:

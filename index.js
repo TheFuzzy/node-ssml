@@ -147,6 +147,54 @@ Prosody.prototype.renderInto = function renderProsodyInto(xml) {
     return prosodyElement;
 }
 
+function Voice(options) {
+    if (!(this instanceof Voice))
+        return new Voice(options);
+    if (options) {
+        _.extend(this, _.pick(options, 'gender', 'age', 'variant', 'name', 'language'));
+    }
+}
+
+Voice.prototype.isValid = function isVoiceValid() {
+    if (isInvalid(this.gender)) return false;
+    if (isInvalidNumber(this.age) && isInvalid(this.age)) return false;
+    if (isInvalidNumber(this.variant) && isInvalid(this.variant)) return false;
+    if (isInvalid(this.name)) return false;
+    if (isInvalid(this.language)) return false;
+    return true;
+}
+
+Voice.prototype.renderInto = function renderVoiceInto(xml) {
+    var voiceElement = xml.ele('voice');
+    if (this.gender) voiceElement.att('gender', this.gender);
+    if (this.age) voiceElement.att('age', this.age);
+    if (this.variant) voiceElement.att('variant', this.variant);
+    if (this.name) voiceElement.att('name', this.name);
+    if (this.language) voiceElement.att('xml:lang', this.language);
+    return voiceElement;
+}
+
+function Phoneme(options) {
+    if (!(this instanceof Phoneme))
+        return new Phoneme(options);
+    if (options) {
+        _.extend(this, _.pick(options, 'alphabet', 'phoneme'));
+    }
+}
+
+Phoneme.prototype.isValid = function isPhonemeValid() {
+    if (isInvalid(this.alphabet)) return false;
+    if (isInvalid(this.phoneme)) return false;
+    return true;
+}
+
+Phoneme.prototype.renderInto = function renderPhonemeInto(xml) {
+    var phonemeElement = xml.ele('phoneme');
+    if (this.alphabet) phonemeElement.att('alphabet', this.alphabet);
+    if (this.phoneme) phonemeElement.att('ph', this.phoneme);
+    return phonemeElement;
+}
+
 function Audio(options) {
     if (!(this instanceof Audio))
         return new Audio(options);
@@ -179,7 +227,7 @@ EndElement.prototype.isValid = function isEndElementValid() {
 }
 
 EndElement.prototype.renderInto = function renderEndElementInto(xml) {
-    if (xml.isRoot) return xml.up();
+    if (!xml.isRoot) return xml.up();
     return xml;
 }
 
@@ -242,6 +290,34 @@ SSML.prototype.prosody = function prosody(options) {
     if (!newProsody.isValid()) throw new Error("Prosody has invalid options!");
     this._elements.push(newProsody);
     return this;
+}
+
+SSML.prototype.voice = function voice(options) {
+    var newVoice = new Voice(options);
+    if (!newVoice.isValid()) throw new Error("Voice has invalid options!");
+    this._elements.push(newVoice);
+    return this;
+}
+
+SSML.prototype.pronounce = function pronounce(phoneme, options) {
+    if (_.isObject(phoneme) && !_.isObject(options)) {
+        options = phoneme;
+    } else if (!options) {
+        options = {};
+    }
+    if (_.isString(phoneme)) {
+        options.phoneme = phoneme;
+    }
+    if (!_.isString(options.alphabet)) {
+        options.alphabet = 'ipa';
+    }
+    var newPhoneme = new Phoneme(options);
+    if (!newPhoneme.isValid()) throw new Error("Pronounce has invalid options!");
+    this._elements.push(newPhoneme);
+    if (_.isString(options.text)) {
+        this.say(options.text)
+    }
+    return this.up();
 }
 
 /**
