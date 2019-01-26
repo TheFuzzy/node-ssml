@@ -158,6 +158,8 @@ Options:
 * `alphabet`: defaults to `ipa`
 * `text`: optional human-readable text
 
+See details in the [SSML specification](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/#S3.1.9).
+
 ### break(time[, options]) / break(options)
 
 Represents a pause in the speech. Accepts one of the following parameters:
