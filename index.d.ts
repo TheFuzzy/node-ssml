@@ -43,6 +43,7 @@ declare module 'ssml' {
     age?: StringOrNumber;
     variant?: StringOrNumber;
     name?: string;
+    language?: string;
   }
 
   interface ToStringOptions {

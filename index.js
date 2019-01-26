@@ -151,7 +151,7 @@ function Voice(options) {
     if (!(this instanceof Voice))
         return new Voice(options);
     if (options) {
-        _.extend(this, _.pick(options, 'gender', 'age', 'variant', 'name'));
+        _.extend(this, _.pick(options, 'gender', 'age', 'variant', 'name', 'language'));
     }
 }
 
@@ -160,6 +160,7 @@ Voice.prototype.isValid = function isVoiceValid() {
     if (isInvalidNumber(this.age) && isInvalid(this.age)) return false;
     if (isInvalidNumber(this.variant) && isInvalid(this.variant)) return false;
     if (isInvalid(this.name)) return false;
+    if (isInvalid(this.language)) return false;
     return true;
 }
 
@@ -169,6 +170,7 @@ Voice.prototype.renderInto = function renderVoiceInto(xml) {
     if (this.age) voiceElement.att('age', this.age);
     if (this.variant) voiceElement.att('variant', this.variant);
     if (this.name) voiceElement.att('name', this.name);
+    if (this.language) voiceElement.att('xml:lang', this.language);
     return voiceElement;
 }
 

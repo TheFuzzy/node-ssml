@@ -123,6 +123,7 @@ At least one voice parameter should be added:
 * `age`
 * `name`
 * `variant`
+* `language`
 
 See details in the [SSML specification](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/#S3.2.1).
 
