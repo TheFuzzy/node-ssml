@@ -38,6 +38,13 @@ declare module 'ssml' {
     src: string;
   }
 
+  interface VoiceOptions {
+    gender?: 'male' | 'female' | 'neutral';
+    age?: StringOrNumber;
+    variant?: StringOrNumber;
+    name?: string;
+  }
+
   interface ToStringOptions {
     minimal?: boolean;
     full?: boolean;
@@ -67,6 +74,9 @@ declare module 'ssml' {
     /** Represents an audio resource */
     audio(src: string, options?: AudioOptions): this;
     audio(options: AudioOptionsSource): this;
+
+    /** Represents a change in speaking voice */
+    voice(options: VoiceOptions): this;
 
     /**
      * Sets the internal context to the previous level in XML.

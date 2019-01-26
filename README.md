@@ -109,6 +109,23 @@ Output:
 </speak>
 ```
 
+### voice(options)
+
+Change the speaking voice
+
+```javascript
+ssmlDoc.voice({ gender: 'female' });
+```
+
+At least one voice parameter should be added:
+
+* `gender`
+* `age`
+* `name`
+* `variant`
+
+See details in the [SSML specification](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/#S3.2.1).
+
 ### break(time[, options]) / break(options)
 
 Represents a pause in the speech. Accepts one of the following parameters:

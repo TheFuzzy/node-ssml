@@ -147,6 +147,31 @@ Prosody.prototype.renderInto = function renderProsodyInto(xml) {
     return prosodyElement;
 }
 
+function Voice(options) {
+    if (!(this instanceof Voice))
+        return new Voice(options);
+    if (options) {
+        _.extend(this, _.pick(options, 'gender', 'age', 'variant', 'name'));
+    }
+}
+
+Voice.prototype.isValid = function isVoiceValid() {
+    if (isInvalid(this.gender)) return false;
+    if (isInvalidNumber(this.age) && isInvalid(this.age)) return false;
+    if (isInvalidNumber(this.variant) && isInvalid(this.variant)) return false;
+    if (isInvalid(this.name)) return false;
+    return true;
+}
+
+Voice.prototype.renderInto = function renderVoiceInto(xml) {
+    var voiceElement = xml.ele('voice');
+    if (this.gender) voiceElement.att('gender', this.gender);
+    if (this.age) voiceElement.att('age', this.age);
+    if (this.variant) voiceElement.att('variant', this.variant);
+    if (this.name) voiceElement.att('name', this.name);
+    return voiceElement;
+}
+
 function Audio(options) {
     if (!(this instanceof Audio))
         return new Audio(options);
@@ -241,6 +266,13 @@ SSML.prototype.prosody = function prosody(options) {
     var newProsody = new Prosody(options);
     if (!newProsody.isValid()) throw new Error("Prosody has invalid options!");
     this._elements.push(newProsody);
+    return this;
+}
+
+SSML.prototype.voice = function voice(options) {
+    var newVoice = new Voice(options);
+    if (!newVoice.isValid()) throw new Error("Voice has invalid options!");
+    this._elements.push(newVoice);
     return this;
 }
 
